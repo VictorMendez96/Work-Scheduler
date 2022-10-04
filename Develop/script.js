@@ -1,6 +1,9 @@
 // Variables to define
 var currentDay = $("#currentDay");
-var sav = $("#saveBtn");
+var saveEvent = $(".saveBtn");
+var timeBlock = $(".time-block")
+var events = []
+var h = 0;
 
 
 // Init function to call all necessary functions at page load
@@ -12,6 +15,8 @@ function init(){
 
 // function to set the current date in Jumbotron
 function setCurrentDate(){
+    var today = moment().format("dddd, MMM Do, YYYY, h:mm a");
+    currentDay.text(today)
 
 };
 
@@ -22,6 +27,11 @@ function setColorCode(){
 
 // function to save input events
 function saveEvent(){
+    var event = {
+        hour : i,
+        info : $.trim($("#sixText").val())
+    }
+
 
 };
 
