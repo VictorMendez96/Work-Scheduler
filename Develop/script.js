@@ -9,6 +9,7 @@ var textArea = $("textArea")
 
 // Init function to call all necessary functions at page load
 function init(){
+    console.log(hour)
     setCurrentDate();
     setColorCode();
     showEvents();
@@ -40,24 +41,47 @@ function setColorCode(){
 
 // function to save input events
 function saveEvent(){
+    localStorage.setItem("events", JSON.stringify(events));
+    events = JSON.parse(localStorage.getItem("events")|| "[]");
+    console.log(hour)
     for (let i = 0; i < textArea.length; i++) {
+        // events = JSON.parse(localStorage.getItem("events")|| "[]");
         var info = textArea[i].value;
         var event = {
             hour : hour,
             info : info,
         };
+        
         events.push(event);
-        events = events.concat(JSON.parse(localStorage.getItem("events")||'[]'));
         localStorage.setItem("events", JSON.stringify(events));
         hour++;
     }
+    
+    ;
+    // events = JSON.parse(localStorage.getItem("events")||'[]');
+    
     hour = 8;
     showEvents();
 };
 
 // function to show saved events
 function showEvents(){
+    events = JSON.parse(localStorage.getItem("events"));
 
+    for (let i = 0; i < textArea.length; i++) {
+        const element = array[i];
+        
+    }
+
+    // events.forEach(Element => {
+    //     i= 0;
+    //     if (hour === $(Element.hour)) {
+    //         textArea[i].value = $(Element.info)
+    //     };
+    //     i++;
+    //     hour++;
+    // });
+    hour = 8;
 };
 
 // Create event listener to save input when clicked
