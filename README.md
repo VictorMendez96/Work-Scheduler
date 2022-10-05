@@ -22,6 +22,7 @@ THEN the saved events persist
 
 ## Application Screenshots
 ![Work Scheduler Main Page](./Develop/assets/images/main-page.png)
+![Work Scheduler with Event](./Develop/assets/images/scheduled-meeting.png)
 
 ## Application Links
 [Github](https://github.com/VictorMendez96/Work-Scheduler)
