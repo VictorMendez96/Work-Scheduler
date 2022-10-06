@@ -41,56 +41,40 @@ function setColorCode(){
 
 // function to save input events
 function saveEvent(){
-    events = []
-    console.log(hour)
+
+    // Clearing events string to be able to push array into string
+    events = [];
+
+    // Loop through each text area to create an event. This allows you to put other data in the event array in the future
     for (let i = 0; i < textArea.length; i++) {
+
         var info = textArea[i].value;
+
         var event = {
-            hour : hour,
             info : info,
         };
-        hour++;
-    }
-    
-    console.log(event)
+
+        // Pushes the event array created above to the last spot
+        events.push(event);
+    };
+    // Send events string to local storage 
     localStorage.setItem("events", JSON.stringify(events));
-    
-    hour = 8;
+
+    // Calls showEvents function
     showEvents();
 };
 
 // function to show saved events
 function showEvents(){
-    events = JSON.parse(localStorage.getItem("events"));
 
-    // events.forEach(element => {
-    //     for (let i = 0; i < textArea.length; i++) {
-    //         if (hour === $(Element.hour)) {
-    //             textArea[i].value = $(Element.info)
-    //         };
-            
-    //     }
-        
-    // });
+    // Retrieve data from local storage or make events an empty string if no no data has been saved yet
+    events = JSON.parse(localStorage.getItem("events")|| '[]');
 
+    // Populate saved data in "info:" to the textArea
+    for (let i = 0; i < events.length; i++) {
+        textArea[i].value = events[i].info;
+    };
 
-
-
-
-    for (let i = 0; i < textArea.length; i++) {
-        if (hour === $(Element.hour)) {
-            textArea[i].value = $(this.info)
-            
-        };
-        hour++
-    }
-    hour = 8;
-    // events.forEach(Element => {
-    //     i= 0;
-        
-    //     i++;
-    //     hour++;
-    // });
 };
 
 // Create event listener to save input when clicked
