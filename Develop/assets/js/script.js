@@ -41,24 +41,19 @@ function setColorCode(){
 
 // function to save input events
 function saveEvent(){
-    localStorage.setItem("events", JSON.stringify(events));
-    events = JSON.parse(localStorage.getItem("events")|| "[]");
+    events = []
     console.log(hour)
     for (let i = 0; i < textArea.length; i++) {
-        // events = JSON.parse(localStorage.getItem("events")|| "[]");
         var info = textArea[i].value;
         var event = {
             hour : hour,
             info : info,
         };
-        
-        events.push(event);
-        localStorage.setItem("events", JSON.stringify(events));
         hour++;
     }
     
-    ;
-    // events = JSON.parse(localStorage.getItem("events")||'[]');
+    console.log(event)
+    localStorage.setItem("events", JSON.stringify(events));
     
     hour = 8;
     showEvents();
@@ -68,20 +63,34 @@ function saveEvent(){
 function showEvents(){
     events = JSON.parse(localStorage.getItem("events"));
 
-    for (let i = 0; i < textArea.length; i++) {
-        const element = array[i];
+    // events.forEach(element => {
+    //     for (let i = 0; i < textArea.length; i++) {
+    //         if (hour === $(Element.hour)) {
+    //             textArea[i].value = $(Element.info)
+    //         };
+            
+    //     }
         
-    }
+    // });
 
+
+
+
+
+    for (let i = 0; i < textArea.length; i++) {
+        if (hour === $(Element.hour)) {
+            textArea[i].value = $(this.info)
+            
+        };
+        hour++
+    }
+    hour = 8;
     // events.forEach(Element => {
     //     i= 0;
-    //     if (hour === $(Element.hour)) {
-    //         textArea[i].value = $(Element.info)
-    //     };
+        
     //     i++;
     //     hour++;
     // });
-    hour = 8;
 };
 
 // Create event listener to save input when clicked
